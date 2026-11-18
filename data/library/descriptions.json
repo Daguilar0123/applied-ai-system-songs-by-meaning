@@ -1,0 +1,72 @@
+[
+  {
+    "id": "changes",
+    "title": "Changes",
+    "artist": "2Pac",
+    "year": 1998,
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Changes_(Tupac_Shakur_song)",
+    "revision_id": 1381254516,
+    "description": "This posthumously released song discusses societal conflicts, addressing issues related to Tupac's era of influence such as race relations, classism, police brutality, drugs, and gang violence. It contrasts the difficulties of life in the ghetto with broader global conflicts, mentions Black Panther Party founder Huey P. Newton, and imagines the possibility of a Black U.S. president alongside the singer picturing his own death. The track became a number-one hit in Norway and the Netherlands and was performed by American rapper 2Pac with the R&B trio Talent.",
+    "draft": "This posthumously released song discusses societal conflicts, addressing issues related to Tupac's era of influence such as race relations, classism, police brutality, drugs, and gang violence. It contrasts the difficulties of life in the ghetto with broader global conflicts, mentions Black Panther Party founder Huey P. Newton, and imagines the possibility of a Black U.S. president alongside the singer picturing his own death. The track became a number-one hit in Norway and the Netherlands and was performed by American rapper 2Pac with the R&B trio Talent.",
+    "drafted_by": "gemini-3.5-flash-lite",
+    "model_version": "gemini-3.5-flash-lite",
+    "drafted_on": "2026-11-17",
+    "approved": true
+  },
+  {
+    "id": "fast-car",
+    "title": "Fast Car",
+    "artist": "Tracy Chapman",
+    "year": 1988,
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Fast_Car",
+    "revision_id": 1384062076,
+    "description": "This folk-pop song tells the story of a working woman and a couple trying to escape the cycle of poverty and make a life together while facing challenges. It is not directly autobiographical, but rather represents the struggles of working-class people in a community observed by the writer growing up. The debut single was written and performed by American singer-songwriter Tracy Chapman.",
+    "draft": "This folk-pop song tells the story of a working woman and a couple trying to escape the cycle of poverty and make a life together while facing challenges. It is not directly autobiographical, but rather represents the struggles of working-class people in a community observed by the writer growing up. The debut single was written and performed by American singer-songwriter Tracy Chapman.",
+    "drafted_by": "gemini-3.5-flash-lite",
+    "model_version": "gemini-3.5-flash-lite",
+    "drafted_on": "2026-11-17",
+    "approved": true
+  },
+  {
+    "id": "jolene",
+    "title": "Jolene",
+    "artist": "Dolly Parton",
+    "year": 1973,
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jolene",
+    "revision_id": 1386234448,
+    "description": "Written from the perspective of a narrator who worries a stunningly beautiful woman with red hair and green eyes will take her husband, the song is a direct plea begging that woman not to steal away her partner. Based on a true story about a bank clerk who once flirted with the singer's husband, it addresses the rival directly to implore her not to take him just because she can. It was written and recorded by the American country singer Dolly Parton.",
+    "draft": "Written from the perspective of a narrator who worries a stunningly beautiful woman with red hair and green eyes will take her husband, the song is a direct plea begging that woman not to steal away her partner. Based on a true story about a bank clerk who once flirted with the singer's husband, it addresses the rival directly to implore her not to take him just because she can. It was written and recorded by the American country singer Dolly Parton.",
+    "drafted_by": "gemini-3.5-flash-lite",
+    "model_version": "gemini-3.5-flash-lite",
+    "drafted_on": "2026-11-17",
+    "approved": true
+  },
+  {
+    "id": "what-was-i-made-for",
+    "title": "What Was I Made For?",
+    "artist": "Billie Eilish",
+    "year": 2023,
+    "wikipedia_url": "https://en.wikipedia.org/wiki/What_Was_I_Made_For%3F",
+    "revision_id": 1381951456,
+    "description": "\"What Was I Made For?\" was written by Billie Eilish and Finneas O'Connell for the soundtrack to the fantasy comedy film Barbie. Inspired by the film, its character, and the way the character would feel, the song also parallels the plot of Barbie and accompanies a scene where Barbie meets the spirit of her creator, Ruth Handler. The song was released as a single by American singer-songwriter Billie Eilish.",
+    "draft": "\"What Was I Made For?\" was written by Billie Eilish and Finneas O'Connell for the soundtrack to the fantasy comedy film Barbie. Inspired by the film, its character, and the way the character would feel, the song also parallels the plot of Barbie and accompanies a scene where Barbie meets the spirit of her creator, Ruth Handler. The song was released as a single by American singer-songwriter Billie Eilish.",
+    "drafted_by": "gemini-3.5-flash-lite",
+    "model_version": "gemini-3.5-flash-lite",
+    "drafted_on": "2026-11-17",
+    "approved": true
+  },
+  {
+    "id": "jingle-bells-batman-parody",
+    "title": "Jingle Bells (the Batman playground parody)",
+    "artist": null,
+    "year": null,
+    "wikipedia_url": "https://en.wikipedia.org/wiki/Jingle_Bells",
+    "revision_id": 1385571638,
+    "description": "This well-known playground parody of Jingle Bells has a catchy, simple melody and mocks Batman and Robin with various playful variations. It has been frequently referenced and sung across different television media, including animated series and holiday specials.",
+    "draft": "This well-known playground parody features a catchy, simple melody and mocks a famous superhero with various playful variations. It has been frequently referenced and sung across different television media, including animated series and holiday specials. The article text does not state who originally wrote or made the parody.",
+    "drafted_by": "gemini-3.5-flash-lite",
+    "model_version": "gemini-3.5-flash-lite",
+    "drafted_on": "2026-11-17",
+    "approved": true
+  }
+]

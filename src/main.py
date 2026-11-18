@@ -32,7 +32,11 @@ def parse_args(argv: Optional[List[str]] = None) -> argparse.Namespace:
                         help="artist-repeat penalty; bare --diversity means 0.5")
     parser.add_argument("--table", action="store_true", help="print a table instead of the reason lines")
     parser.add_argument("--experiment", choices=sorted(EXPERIMENTS), help="swap in an alternate weight set")
+    parser.add_argument("--search", metavar="TEXT", help="search the song library by meaning, e.g. --search \"a song about leaving home\"")
+    parser.add_argument("--kind", choices=["lyrics", "description"], help="with --search: only look at lyric verses or only at descriptions")
     args = parser.parse_args(argv)
+    if args.kind and args.search is None:
+        parser.error("--kind only works with --search")
     if args.experiment and args.mode != "weighted":
         parser.error("--experiment changes the weights, so it only works with --mode weighted")
     return args
@@ -63,6 +67,13 @@ def run_profile(name: str, prefs: Dict, songs: List[Dict], k: int = 5, mode: str
 def main(argv: Optional[List[str]] = None) -> None:
     """Load songs, print 'Loaded songs: N', run the chosen profile(s), print each block."""
     args = parse_args(argv)
+    if args.search is not None:                        # search mode: the library search, not the profile recommender
+        try:
+            from src.search_cli import run_search
+        except ImportError:  # running as `python src/main.py`
+            from search_cli import run_search
+        print(run_search(args.search, kind=args.kind))
+        return
     songs = load_songs("data/songs.csv")
     print(f"Loaded songs: {len(songs)}")
     names = list(PROFILES) if args.all else [args.profile]
