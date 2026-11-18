@@ -2,6 +2,7 @@
 from __future__ import annotations
 import csv
 from dataclasses import asdict, dataclass
+from pathlib import Path
 from typing import Callable, Dict, List, Optional, Tuple
 
 @dataclass
@@ -33,6 +34,8 @@ class UserProfile:
     likes_acoustic: bool
 
 
+# The one way to find the catalog: from this file's own location, so it works from any folder (Nov 18, 2026).
+SONGS_CSV = Path(__file__).resolve().parent.parent / "data" / "songs.csv"
 NUMERIC_FIELDS = ("energy", "tempo_bpm", "valence", "danceability", "acousticness")   # S2 converts these to float; "id" to int
 DEFAULT_WEIGHTS: Dict[str, float] = {"genre": 2.0, "mood": 1.0, "energy": 1.0, "valence": 0.5, "acoustic": 0.5}   # decided Nov 2, 2026: partial genre match = half points; valence only when the profile has a target
 

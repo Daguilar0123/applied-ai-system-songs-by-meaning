@@ -2,9 +2,9 @@
 import argparse
 from typing import Dict, List, Optional
 try:
-    from src.recommender import DEFAULT_WEIGHTS, load_songs, recommend_songs, score_song
+    from src.recommender import DEFAULT_WEIGHTS, SONGS_CSV, load_songs, recommend_songs, score_song
 except ImportError:  # running as `python src/main.py`
-    from recommender import DEFAULT_WEIGHTS, load_songs, recommend_songs, score_song
+    from recommender import DEFAULT_WEIGHTS, SONGS_CSV, load_songs, recommend_songs, score_song
 
 PROFILES: Dict[str, Dict] = {
     "pop_happy": {"genre": "pop", "mood": "happy", "energy": 0.8, "valence": 0.8},
@@ -74,7 +74,7 @@ def main(argv: Optional[List[str]] = None) -> None:
             from search_cli import run_search
         print(run_search(args.search, kind=args.kind))
         return
-    songs = load_songs("data/songs.csv")
+    songs = load_songs(str(SONGS_CSV))
     print(f"Loaded songs: {len(songs)}")
     names = list(PROFILES) if args.all else [args.profile]
     weights = EXPERIMENTS[args.experiment] if args.experiment else None

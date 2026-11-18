@@ -163,3 +163,29 @@ AI did most of the typing and I did the deciding. The sessions proposed the reci
 What surprised me is how much five weighted matches and a because line feel like a recommendation. The conflicted profile is the clearest example: a slow sad pop song won a loud profile because two words matched, and the explanation made that feel reasonable even though the numbers said otherwise.
 
 Next I would build the two-cluster profile and grow the catalog, and I would like to replace the typed-in numbers with features measured from audio, so that valence means what the music sounds like instead of what someone imagined.
+
+---
+
+# Project 4 addendum: search by meaning
+
+The sections above are the Project 3 model card as submitted. The sections below are for the Project 4 additions (search by meaning over a small song library). Evaluation tables are in `evals/results.md`.
+
+## Limitations and biases (Project 4)
+
+<!-- STUDENT WRITES THIS -->
+
+## Misuse and prevention (Project 4)
+
+<!-- STUDENT WRITES THIS -->
+
+## What surprised me in testing (Project 4)
+
+<!-- STUDENT WRITES THIS -->
+
+## Collaboration with AI (Project 4)
+
+<!-- STUDENT WRITES THIS: one suggestion accepted, one rejected or changed -->
+
+## Testing results (Project 4)
+
+<!-- STUDENT WRITES THIS. Numbers: evals/results.md -->

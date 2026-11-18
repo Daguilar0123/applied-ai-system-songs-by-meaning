@@ -3,11 +3,10 @@ from pathlib import Path
 
 import pytest
 
-from src.recommender import NUMERIC_FIELDS, load_songs
+from src.recommender import NUMERIC_FIELDS, SONGS_CSV, load_songs
 
-# data/songs.csv relative to the repo root, resolved from this file so the path
-# is right no matter which directory pytest is started from.
-CSV_PATH = str(Path(__file__).resolve().parents[1] / "data" / "songs.csv")
+# data/songs.csv, located from the code's own file location (src/recommender.py), not from the working folder.
+CSV_PATH = str(SONGS_CSV)
 
 REQUIRED_COLUMNS = (
     "id", "title", "artist", "genre", "mood",
@@ -41,3 +40,11 @@ def test_genres_are_diverse():
 def test_missing_file_raises():
     with pytest.raises(FileNotFoundError):
         load_songs(str(Path(CSV_PATH).with_name("no_such_songs.csv")))
+
+
+def test_songs_csv_path_comes_from_the_code_not_the_working_folder(tmp_path, monkeypatch, capsys):
+    from src.main import main
+    assert SONGS_CSV.is_absolute() and SONGS_CSV.exists()
+    monkeypatch.chdir(tmp_path)                       # an empty folder with no data/ in it
+    main(["--profile", "pop_happy", "--k", "1"])
+    assert "Loaded songs: 20" in capsys.readouterr().out

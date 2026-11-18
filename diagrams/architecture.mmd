@@ -1,0 +1,57 @@
+%% Architecture of Project 4: search by meaning. Drawn from the spec's data flow and checked against the code on Nov 18, 2026.
+%% Hexagons are the places a person checks something. Not built: the playlist link and the Atlas index.
+flowchart TD
+    subgraph build ["Build time, run once"]
+        WIKI["Wikipedia article text<br/>summary plus the lyrics or background section"]
+        DRAFT["scripts/draft_descriptions.py<br/>Gemini drafts 2 to 4 sentences, approved: false"]
+        REVIEW{{"Danny reads each description against its article,<br/>edits it, sets approved: true"}}
+        LYRICS["data/library/lyrics<br/>1 to 3 public-domain verses per song"]
+        BUILD["scripts/build_index.py<br/>src/embedder.py: fastembed bge-small, 384 numbers per text"]
+        VECTORS[("data/song_vectors.json<br/>one record per verse or approved description")]
+        WIKI --> DRAFT --> REVIEW
+        REVIEW -->|"approved descriptions only"| BUILD
+        LYRICS --> BUILD
+        BUILD --> VECTORS
+    end
+
+    subgraph ask ["Every search: python -m src.main --search"]
+        REQ["Request typed on the command line<br/>optional --kind lyrics or description"]
+        LEN{"300 characters or fewer?"}
+        EMBED["src/embedder.py<br/>same local model turns the request into 384 numbers"]
+        SEARCH["src/song_search.py search<br/>NumPy cosine over the saved vectors<br/>top 3 with scores from 0 to 1"]
+        LINE{"Best score at or above MIN_SCORE 0.78?"}
+        WRITER["src/answer.py Gemini answer writer<br/>sees the request and retrieved documents only<br/>temperature 0, runs only if a key exists"]
+        CHECK{"src/checker.py<br/>valid JSON object with song_id, reason, cited_text?<br/>song was retrieved? quote is in that song's text?"}
+        PASS["Answer: song, reason, quoted text"]
+        FALLBACK["Plain answer from the top match<br/>marked fallback"]
+        NONE["nothing close found"]
+        LONG["Request too long message"]
+        REQ --> LEN
+        LEN -->|"no"| LONG
+        LEN -->|"yes"| EMBED --> SEARCH
+        VECTORS --> SEARCH
+        SEARCH --> LINE
+        LINE -->|"no"| NONE
+        LINE -->|"yes"| WRITER --> CHECK
+        CHECK -->|"pass"| PASS
+        CHECK -->|"reject, or no key, or the call failed"| FALLBACK
+    end
+
+    TRACE["Trace table printed<br/>one JSON line added to logs/search_trace.jsonl"]
+    READTRACE{{"Danny reads the trace"}}
+    LONG --> TRACE
+    NONE --> TRACE
+    PASS --> TRACE
+    FALLBACK --> TRACE
+    TRACE --> READTRACE
+
+    subgraph test ["Testing: python -m src.evaluate"]
+        APPROVE{{"Danny approves each expected answer<br/>in evals/golden_set.json"}}
+        GOLDEN["10 fixed requests: 6 retrieval, 4 guardrail"]
+        EVAL["src/evaluate.py<br/>word matching against meaning search,<br/>guardrails, repeat runs, quotes, checker on bad replies"]
+        RESULTS["evals/results.md"]
+        SUMMARY{{"Danny reads the results and writes the Testing Summary"}}
+        APPROVE --> GOLDEN --> EVAL --> RESULTS --> SUMMARY
+    end
+    VECTORS --> EVAL
+    SEARCH -.->|"the same search code"| EVAL

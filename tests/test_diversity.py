@@ -2,7 +2,7 @@
 import copy
 
 from src.diversity import apply_artist_penalty
-from src.recommender import load_songs, recommend_songs
+from src.recommender import SONGS_CSV, load_songs, recommend_songs
 
 
 def _song(title, artist):
@@ -44,7 +44,7 @@ def test_input_not_mutated():
 
 
 def test_recommend_songs_with_penalty_changes_top_list():
-    songs = load_songs("data/songs.csv")
+    songs = load_songs(str(SONGS_CSV))
     prefs = {"genre": "edm", "mood": "euphoric", "energy": 0.9}   # Neon Echo has three songs and two reach the top 5
     plain = recommend_songs(prefs, songs, k=5)
     penalized = recommend_songs(prefs, songs, k=5, diversity_penalty=1.0)
